@@ -1,0 +1,12 @@
+# Download bakta database first
+bakta_db download --output /path/to/bakta_db
+
+# Run annotation for each sample
+for sample in G20253359 G20253360 G20253361 G20253517 G20253518; do
+  bakta \
+    --db /path/to/bakta_db \
+    --output ${sample}_annotation \
+    --prefix ${sample} \
+    --threads 8 \
+    ${sample}.fasta
+done
