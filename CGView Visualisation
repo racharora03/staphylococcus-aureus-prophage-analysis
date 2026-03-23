@@ -1,0 +1,5 @@
+# Create XML file and generate map
+java -jar cgview.jar \
+  -i sample_annotation.gff3 \
+  -f sample.fasta \
+  -o sample_map.png
