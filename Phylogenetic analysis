@@ -1,0 +1,34 @@
+# SNP Detection with Snippy
+# Create samples.tsv with format: sample_name,forward_read,reverse_read
+cat > samples.tsv << EOF
+G20253359	/path/to/G20253359_1.fastq.gz	/path/to/G20253359_2.fastq.gz
+G20253360	/path/to/G20253360_1.fastq.gz	/path/to/G20253360_2.fastq.gz
+G20253361	/path/to/G20253361_1.fastq.gz	/path/to/G20253361_2.fastq.gz
+G20253517	/path/to/G20253517_1.fastq.gz	/path/to/G20253517_2.fastq.gz
+G20253518	/path/to/G20253518_1.fastq.gz	/path/to/G20253518_2.fastq.gz
+EOF
+
+# Run Multi-Snippy
+snippy-multi samples.tsv \
+  --ref reference.fasta \
+  --cpus 8 \
+  --outdir snippy_output
+
+# Generate core SNP alignment
+snippy-core \
+  --ref reference.fasta \
+  --outdir core_snps \
+  snippy_output/*.aln
+# Phylogenetic Tree with IQ-TREE
+# Run IQ-TREE on core SNP alignment
+iqtree2 \
+  -s core_snps/core.aln \
+  -m MFP \
+  -B 1000 \
+  -nt AUTO \
+  -pre staph_phylogeny
+# Visualization with Microreact
+# Export metadata as CSV:
+# Upload staph_phylogeny.treefile
+# Upload metadata CSV
+# Generate interactive visualization
