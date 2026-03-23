@@ -1,0 +1,13 @@
+# Install spaTyper
+pip install spaTyper
+git clone https://github.com/JFsanchezherrero/spa_typing.git
+cd spa_typing
+pip install setup.py
+
+# Run spaTyper on each sample
+for sample in G20253359 G20253360 G20253361 G20253517 G20253518; do
+  spaTyper \
+    -g "${sample}.fasta" \
+    --output "spa_${sample}.tsv" \
+    --debug
+done
