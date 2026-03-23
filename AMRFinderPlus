@@ -1,0 +1,6 @@
+# Run AMRFinderPlus on all samples
+amrfinderplus \
+  -n sample.fasta \
+  -o amr_results_sample.tsv \
+  --plus \
+  --organism Staphylococcus_aureus
