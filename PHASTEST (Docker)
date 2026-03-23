@@ -1,0 +1,8 @@
+# Run PHASTEST Docker container
+docker run --rm \
+  -v $(pwd):/data \
+  wishartlab/phastest-docker \
+  --yes \
+  --phage-only \
+  -i contig \
+  -s /data/sample.fasta
