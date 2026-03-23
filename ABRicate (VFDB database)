@@ -1,0 +1,5 @@
+# Run ABRicate with VFDB database
+abricate \
+  --db vfdb \
+  sample.fasta \
+  > virulence_sample.tsv
