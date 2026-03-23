@@ -1,0 +1,7 @@
+# Run sccmec on each sample
+for sample in G20253359 G20253360 G20253361 G20253517 G20253518; do
+  sccmec \
+    -i ${sample}.fasta \
+    --prefix "${sample}" \
+    -o sccmec_output/
+done
